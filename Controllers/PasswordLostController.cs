@@ -3,28 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProjetDotNet.Controllers
 {
-    public class LoginController : Controller
+    public class PasswordLostController : Controller
     {
-        // GET: LoginController 
-        public IActionResult Index()
+        // GET: PasswordLost
+        public ActionResult Index()
         {
             return PartialView();
         }
-       
 
-        // GET: LoginController/Details/5
+        // GET: PasswordLost/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: LoginController/Create
+        // GET: PasswordLost/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: LoginController/Create
+        // POST: PasswordLost/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -39,13 +38,13 @@ namespace ProjetDotNet.Controllers
             }
         }
 
-        // GET: LoginController/Edit/5
+        // GET: PasswordLost/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: LoginController/Edit/5
+        // POST: PasswordLost/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -60,13 +59,13 @@ namespace ProjetDotNet.Controllers
             }
         }
 
-        // GET: LoginController/Delete/5
+        // GET: PasswordLost/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: LoginController/Delete/5
+        // POST: PasswordLost/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
