@@ -1,8 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<div class="container">
+    <div class="row">
+        
+@{for(int i=0;i<3;i++){
+                <div class="col-md-4">
+    <div class="card text-center">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Report des DS </h5>
+                <p class="card-text">A cause de grevse de transport on propose le report des ds de demain</p>
+                <a href="#" class="btn btn-dark">Vote</a>
+            </div>
+            <div class="card-footer text-muted">
+                Expires in 2 hours 
+            </div>
+    </div>
+</div>
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+}
+</div>
 </div>

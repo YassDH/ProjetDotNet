@@ -17,8 +17,8 @@ namespace ProjetDotNet.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [Route("/profil")]
+        public IActionResult Profil()
         {
             return View();
         }
