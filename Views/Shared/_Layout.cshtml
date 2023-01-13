@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a asp-controller="@ViewBag.result" asp-action="Results" class="nav-link text-white">
                             <i class="fa-solid fa-square-poll-vertical"></i>
                        Results
                     </a>
@@ -54,7 +54,6 @@
             <main role="main" class="p-3 justify-content-center h-100 w-100" style="overflow: hidden;">
                 @RenderBody()
             </main>
-            
         </div>
         
     </div>
