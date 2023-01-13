@@ -30,8 +30,32 @@
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                @Html.TextBox("CarteId","", new { @class = "form-control", @type="number", @id="floatingInput" })
+                @Html.TextBox("CarteId","", new { @class = "form-control", @type="text", @id="floatingInput" })
                 <label for="floatingInput">CarteId</label>
+            </div>
+            <div class="form-floating">
+                @Html.DropDownList("CarteId",new List<SelectListItem>{
+
+                new SelectListItem { Text = "MPI", Value = "1"},
+                new SelectListItem { Text = "GL2", Value = "2"},
+                new SelectListItem { Text = "RT2", Value = "3"},
+                new SelectListItem { Text = "IA2", Value = "4"},
+                new SelectListItem { Text = "IMI2", Value = "5"},
+                new SelectListItem { Text = "GL3", Value = "6"},
+                new SelectListItem { Text = "RT3", Value = "7"},
+                new SelectListItem { Text = "IA3", Value = "8"},
+                new SelectListItem { Text = "IMI3", Value = "9"},
+                new SelectListItem { Text = "GL4", Value = "10"},
+                 new SelectListItem { Text = "RT4", Value = "11"},
+                 new SelectListItem { Text = "IA4", Value = "12"},
+                 new SelectListItem { Text = "IMI4", Value = "13"},
+                new SelectListItem { Text = "GL5", Value = "14"},
+                new SelectListItem { Text = "RT5", Value = "15"},
+                new SelectListItem { Text = "IA5", Value = "16"},
+                new SelectListItem { Text = "IMI5", Value = "17"}
+                }, new { @class = "form-control", @type="text", @id="floatingInput" })
+                <label for="floatingInput">Class</label>
+
             </div>
             <div class="form-floating">
                 @Html.TextBox("Password","", new { @class = "form-control", @type="password", @id="floatingPassword" })

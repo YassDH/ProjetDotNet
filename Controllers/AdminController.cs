@@ -11,7 +11,12 @@ namespace ProjetDotNet.Controllers
             ViewData["name"] = "Student request";
             return View();
         }
-
+        public ActionResult Results()
+        {
+            ViewData["name"] = "Student request";
+            ViewBag.result = "Admin";
+            return View();
+        }
         // GET: AdminController1/Details/5
         public ActionResult Details(int id)
         {

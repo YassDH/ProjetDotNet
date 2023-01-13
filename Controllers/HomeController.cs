@@ -18,6 +18,12 @@ namespace ProjetDotNet.Controllers
             ViewData["name"] = "Profile";
             return View();
         }
+        public IActionResult Results()
+        {
+            ViewData["name"] = "Profile";
+            ViewBag.result = "Home";
+            return View();
+        }
 
         public IActionResult Profil()
 
