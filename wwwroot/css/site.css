@@ -17,7 +17,16 @@ body {
   margin-bottom: 60px;
 }
 .gradient-custom {
+<<<<<<< HEAD
     background: #b01313;
     background: -webkit-linear-gradient(to right bottom, rgba(12, 11, 11,1), rgba(128, 128, 128,1));
     background: linear-gradient(to right bottom, rgba(12, 11, 11,1), rgba(128, 128, 128,1))
+=======
+    /* fallback for old browsers */
+    background: #f6d365;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+>>>>>>> 6bd57e81f629af6346a83ad2f1883ea4303c466b
 }

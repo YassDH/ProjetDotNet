@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Compile Remove="Views\NewFolder\**" />
     <Content Remove="Views\NewFolder\**" />
@@ -17,4 +18,6 @@
     <Folder Include="Views\Login\" />
   </ItemGroup>
 
+=======
+>>>>>>> 6bd57e81f629af6346a83ad2f1883ea4303c466b
 </Project>
