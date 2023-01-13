@@ -15,11 +15,14 @@ namespace ProjetDotNet.Controllers
 
         public IActionResult Index()
         {
+            ViewData["name"] = "Profile";
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Profil()
+
         {
+            ViewData["name"] = "Profile";
             return View();
         }
 

@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjetDotNet.styles.css" asp-append-version="true" />
-
-
-
-    
-    
     <link href="./css/index.css" rel="stylesheet">
   </head>
   <body class="text-center">
@@ -30,7 +25,11 @@
       @Html.TextBox("Password","", new { @class = "form-control", @type="password", @id="floatingPassword" })
       <label for="floatingPassword">Password</label>
     </div>
-    <button class="w-100 btn btn-lg btn-dark" type="submit">Log In</button>
+            <div class="form-floating d-flex float-end">
+                <a class="text-body" asp-controller="PasswordLost" asp-action="Index">Forgot password?</a>
+            </div>
+    <button class="w-100 btn btn-lg btn-dark mt-2" type="submit">Log In</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a class="link-danger" asp-controller="SignUp" asp-action="Index">Register</a></p>
     <p class="mt-5 mb-3 text-muted">&copy; INSAT 2022 - 2023 </p>
   }
 </main>

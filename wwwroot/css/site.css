@@ -15,4 +15,11 @@ html {
 
 body {
   margin-bottom: 60px;
+
+}
+
+.gradient-custom {
+    background: #b01313;
+    background: -webkit-linear-gradient(to right bottom, rgba(12, 11, 11,1), rgba(128, 128, 128,1));
+    background: linear-gradient(to right bottom, rgba(12, 11, 11,1), rgba(128, 128, 128,1))
 }

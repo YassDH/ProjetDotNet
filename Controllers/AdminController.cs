@@ -3,28 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProjetDotNet.Controllers
 {
-    public class LoginController : Controller
+    public class AdminController : Controller
     {
-        // GET: LoginController 
-        public IActionResult Index()
+        // GET: AdminController1
+        public ActionResult Index()
         {
-            return PartialView();
+            ViewData["name"] = "Student request";
+            return View();
         }
-       
 
-        // GET: LoginController/Details/5
+        // GET: AdminController1/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: LoginController/Create
+        // GET: AdminController1/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: LoginController/Create
+        // POST: AdminController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -39,13 +39,13 @@ namespace ProjetDotNet.Controllers
             }
         }
 
-        // GET: LoginController/Edit/5
+        // GET: AdminController1/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: LoginController/Edit/5
+        // POST: AdminController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -60,13 +60,13 @@ namespace ProjetDotNet.Controllers
             }
         }
 
-        // GET: LoginController/Delete/5
+        // GET: AdminController1/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: LoginController/Delete/5
+        // POST: AdminController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
