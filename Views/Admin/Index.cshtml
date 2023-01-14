@@ -1,6 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProjetDotNet.Models.FormsModels.getId
 @{
-    
+    ViewData["Title"] = "Home Page";
 }
+<div class="text-center">
+    <h1 class=" display-4 ">Home</h1>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        @foreach (ProjetDotNet.Models.DBModels.Survey survey in ViewBag.survey)
+        {
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-header d-flex text-center">
+                        <h4 class="flex-grow-1">Survey</h4>
+                        @using (Html.BeginForm("deleteForm", "Admin", FormMethod.Post))
+                        {
+                            <input value=@survey.Id type="text" asp-for="Id" hidden />
+                            <input class="align-self-end btn btn-outline-danger fa-regular fa-trash-can" type="Submit" value="X">
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@survey.Question </h5>
+                        <p class="card-text">@survey.Description</p>
+                        @if (survey.closed == 0)
+                        {
+                            @using (Html.BeginForm("CloseForm", "Admin", FormMethod.Post))
+                            {
+                                <input value=@survey.Id type="text" asp-for="Id" hidden />
+                                <input class="btn btn-outline-dark w-100" value="Close" type="submit" />
+                            }
+
+                        }
+                        else
+                        {
+                            <input class="btn btn-dark w-100" value="Already Closed" type="submit" disabled />
+                        }
+                    </div>
+                    <div class="card-footer text-muted">
+                        @if (survey.closed == 1)
+                        {
+                            <p>closed</p>
+                        }
+                        else
+                        {
+                            <p>Open</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetDotNet.Data;
 
@@ -11,9 +12,11 @@ using ProjetDotNet.Data;
 namespace ProjetDotNet.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    partial class ProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230114010751_Migration 20")]
+    partial class Migration20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +127,7 @@ namespace ProjetDotNet.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.Votes", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,10 +145,10 @@ namespace ProjetDotNet.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("VotedSurveys");
+                    b.ToTable("Votes");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.Votes", b =>
                 {
                     b.HasOne("ProjetDotNet.Models.DBModels.Survey", "Survey")
                         .WithMany()

@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model ProjetDotNet.Models.FormsModels.UserFormModel
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,60 +8,66 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProjetDotNet.styles.css" asp-append-version="true" />
-    <link href="./css/index.css" rel="stylesheet">
+    <link href="~/css/index.css" rel="stylesheet" asp-append-version="true">
 </head>
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <!-- Change The C -->
-        @using (Html.BeginForm("Index", "Signup", FormMethod.Post))
+        @using (Html.BeginForm("SignUp", "Login", FormMethod.Post))
         {
-            <img class="mb-4 rounded-circle border-3 border-info" src="./img/logo.png" alt="" width="175" height="175">
+            <img class="mb-4 rounded-circle border-3 border-info" src="~/img/logo.png" alt="" width="175" height="175">
             <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+            @if (ViewBag.errorMessage != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.errorMessage
+                </div>
+            }
              <div class="form-floating">
-                @Html.TextBox("FirstName","", new { @class = "form-control", @type="text", @id="floatingInput" })
+                @Html.TextBoxFor(m => m.prenom, new { @class = "form-control", @type="text", @id="floatingInput", required = "required" })
                 <label for="floatingInput">First Name</label>
             </div>
             <div class="form-floating">
-                @Html.TextBox("LastName","", new { @class = "form-control", @type="text", @id="floatingInput" })
+                @Html.TextBoxFor(m => m.nom, new { @class = "form-control", @type="text", @id="floatingInput", required = "required" })
                 <label for="floatingInput">Last Name</label>
             </div>
             <div class="form-floating">
-                @Html.TextBox("Email","", new { @class = "form-control", @type="email", @id="floatingInput" })
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", @type="email", @id="floatingInput", required = "required" })
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                @Html.TextBox("CarteId","", new { @class = "form-control", @type="text", @id="floatingInput" })
+                @Html.TextBoxFor(m => m.password, new { @class = "form-control", @type="password", @id="floatingPassword", required = "required" })
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="form-floating">
+                @Html.TextBoxFor(m => m.carteEtudiant, new { @class = "form-control", @type="number", @id="floatingInput", required = "required" })
                 <label for="floatingInput">CarteId</label>
             </div>
             <div class="form-floating">
-                @Html.DropDownList("CarteId",new List<SelectListItem>{
+                @Html.DropDownListFor(m => m.classe,new List<SelectListItem>{
 
                 new SelectListItem { Text = "MPI", Value = "1"},
                 new SelectListItem { Text = "GL2", Value = "2"},
                 new SelectListItem { Text = "RT2", Value = "3"},
-                new SelectListItem { Text = "IA2", Value = "4"},
+                new SelectListItem { Text = "IIA2", Value = "4"},
                 new SelectListItem { Text = "IMI2", Value = "5"},
                 new SelectListItem { Text = "GL3", Value = "6"},
                 new SelectListItem { Text = "RT3", Value = "7"},
-                new SelectListItem { Text = "IA3", Value = "8"},
+                new SelectListItem { Text = "IIA3", Value = "8"},
                 new SelectListItem { Text = "IMI3", Value = "9"},
                 new SelectListItem { Text = "GL4", Value = "10"},
-                 new SelectListItem { Text = "RT4", Value = "11"},
-                 new SelectListItem { Text = "IA4", Value = "12"},
-                 new SelectListItem { Text = "IMI4", Value = "13"},
+                new SelectListItem { Text = "RT4", Value = "11"},
+                new SelectListItem { Text = "IIA4", Value = "12"},
+                new SelectListItem { Text = "IMI4", Value = "13"},
                 new SelectListItem { Text = "GL5", Value = "14"},
                 new SelectListItem { Text = "RT5", Value = "15"},
-                new SelectListItem { Text = "IA5", Value = "16"},
+                new SelectListItem { Text = "IIA5", Value = "16"},
                 new SelectListItem { Text = "IMI5", Value = "17"}
-                }, new { @class = "form-control", @type="text", @id="floatingInput" })
-                <label for="floatingInput">Class</label>
+            }, new { @class = "form-control", @type="text", @id="floatingInput", required = "required" })
+                <label for="floatingInput">Classe</label>
 
             </div>
-            <div class="form-floating">
-                @Html.TextBox("Password","", new { @class = "form-control", @type="password", @id="floatingPassword" })
-                <label for="floatingPassword">Password</label>
-            </div>
+            
             <button class="w-100 btn btn-lg btn-dark mt-2" type="submit">Sign Up</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a class="link-danger" asp-controller="Login" asp-action="Index">Sign in</a></p>
             <p class="mt-5 mb-3 text-muted">&copy; INSAT 2022 - 2023 </p>

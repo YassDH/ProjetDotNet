@@ -13,7 +13,7 @@ namespace ProjetDotNet.Data
 
         public DbSet<Users> Users { get; set; }
         public DbSet<Survey> Surveys { get; set; }
-        public DbSet<Option> Options { get; set; }
+        public DbSet<VotesDone> VotedSurveys { get; set; }
 
     }
 }

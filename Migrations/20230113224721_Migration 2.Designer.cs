@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetDotNet.Data;
 
@@ -11,9 +12,11 @@ using ProjetDotNet.Data;
 namespace ProjetDotNet.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    partial class ProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230113224721_Migration 2")]
+    partial class Migration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,29 @@ namespace ProjetDotNet.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.Option", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("OptionText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("SurveyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("VotesNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("Options");
+                });
 
             modelBuilder.Entity("ProjetDotNet.Models.DBModels.Survey", b =>
                 {
@@ -31,49 +57,11 @@ namespace ProjetDotNet.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Option1")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Option2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Option3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Option4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Option5")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Option6")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("closed")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix2")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix3")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix4")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix5")
-                        .HasColumnType("int");
-
-                    b.Property<int>("nbVotesChoix6")
                         .HasColumnType("int");
 
                     b.Property<int>("votesNumber")
@@ -124,44 +112,16 @@ namespace ProjetDotNet.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.Option", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SurveyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("VotedSurveys");
+                    b.HasOne("ProjetDotNet.Models.DBModels.Survey", null)
+                        .WithMany("options")
+                        .HasForeignKey("SurveyId");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.Survey", b =>
                 {
-                    b.HasOne("ProjetDotNet.Models.DBModels.Survey", "Survey")
-                        .WithMany()
-                        .HasForeignKey("SurveyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjetDotNet.Models.DBModels.Users", "Users")
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Survey");
-
-                    b.Navigation("Users");
+                    b.Navigation("options");
                 });
 #pragma warning restore 612, 618
         }

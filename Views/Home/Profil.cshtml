@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model ProjetDotNet.Models.DBModels.Users
 <div class="text-center">
     <h1 class=" display-4 ">Profile</h1>
 </div>
@@ -11,8 +9,8 @@
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <img src="https://github.com/mdo.png"
                                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                            <h5>Yassine Dhaouadi</h5>
-                            <p>GL3</p>
+                            <h5>@Model.nom @Model.prenom</h5>
+                            <p>@Model.classe</p>
                             <i class="far fa-edit mb-5"></i>
                         </div>
                         <div class="col-md-8">
@@ -20,25 +18,18 @@
                                 <h6>Informations</h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
+                                    
                                     <div class="col-6 mb-3">
-                                        <h6>Email</h6>
-                                        <p class="text-muted">yassine@insat.ucar.tn</p>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <h6>Phone</h6>
-                                        <p class="text-muted">22222222</p>
+                                        <h6>Carte Etudiant</h6>
+                                        <p class="text-muted">@Model.carteEtudiant</p>
                                     </div>
                                 </div>
-                                <h6>Projects</h6>
+                                
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
-                                        <h6>Recent</h6>
-                                        <p class="text-muted">Lorem ipsum</p>
-                                    </div>
-                                    <div class="col-6 mb-3">
-                                        <h6>Most Viewed</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <h6>Email</h6>
+                                        <p class="text-muted">@Model.email</p>
                                     </div>
                                 </div>
 

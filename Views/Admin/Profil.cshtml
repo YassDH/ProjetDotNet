@@ -1,0 +1,38 @@
+﻿@model ProjetDotNet.Models.FormsModels.UserLoginForm
+
+<div class="text-center">
+    <h1 class=" display-4 ">Student Request</h1>
+</div>
+<div class="container ">
+        <div class="row justify-content-around">
+        @if (@ViewBag.users != null)
+        {
+            @foreach (ProjetDotNet.Models.DBModels.Users user in @ViewBag.users)
+            {
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Student</h5>
+                        <p class="card-text text-center">@user.nom  @user.prenom </p>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item">Class :@user.classe</li>
+                        <li class="list-group-item">Carte id : @user.carteEtudiant</li>
+                        <li class="list-group-item">Email : @user.email</li>
+                    </ul>
+                    <div class="card-body btn-group">
+                        @using (Html.BeginForm("Accept", "Admin", FormMethod.Post))
+                        {
+                            <input value=@user.email type="text" asp-for="email" hidden/>
+                            <input class="btn btn-dark" type="submit" value="Accept"/>
+                        }
+                        @using (Html.BeginForm("Decline", "Admin", FormMethod.Post))
+                        {
+                            <input value=@user.email type="text" asp-for="email" hidden />
+                            <input class="btn btn-outline-danger" type="submit" value="decline" />
+                        }
+                    </div>
+                </div>
+            }
+        }
+        </div>
+</div>

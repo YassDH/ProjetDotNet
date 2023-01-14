@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetDotNet.Data;
 
@@ -11,9 +12,11 @@ using ProjetDotNet.Data;
 namespace ProjetDotNet.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    partial class ProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230114040251_Migration 23")]
+    partial class Migration23
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +127,7 @@ namespace ProjetDotNet.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotedSurveys", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -133,19 +136,19 @@ namespace ProjetDotNet.Migrations
                     b.Property<Guid>("SurveyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UsersId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SurveyId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("VotedSurveys");
                 });
 
-            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotesDone", b =>
+            modelBuilder.Entity("ProjetDotNet.Models.DBModels.VotedSurveys", b =>
                 {
                     b.HasOne("ProjetDotNet.Models.DBModels.Survey", "Survey")
                         .WithMany()
@@ -153,15 +156,15 @@ namespace ProjetDotNet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjetDotNet.Models.DBModels.Users", "Users")
+                    b.HasOne("ProjetDotNet.Models.DBModels.Users", "User")
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Survey");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,73 @@
+﻿Amine Gasmi
+@model ProjetDotNet.Models.FormsModels.VoteForm
+<div class="text-center">
+    <h1 class=" display-4 ">Voter</h1>
+</div>
+
+<div class="container m-auto w-50 ">
+    <div class="row ">
+        @using (Html.BeginForm("SaveVote", "Home", FormMethod.Post))
+        {
+            <h4 class="fw-bold text-center mt-border-3 alert ">@ViewBag.Survey.Question</h4>
+            <div class="justify-content-center  p-2">
+                <div class="form-check m-4">
+                    @Html.RadioButtonFor(m=>m.check1 , new { @class="form-check-input", @value = "1"})
+                    <label class="form-check-label fw-bold" for="radioExample1">
+                        @ViewBag.Survey.Option1
+                    </label>
+                </div>
+                <div class="form-check m-4">
+                    @Html.RadioButtonFor(m=>m.check1 , new {@class="form-check-input", @value = "2"})
+                    <label class="form-check-label fw-bold" for="radioExample2">
+                        @ViewBag.Survey.Option2
+                    </label>
+                </div>
+                @if (ViewBag.Survey.Option3 != null)
+                {
+                    <div class="form-check m-4">
+                        @Html.RadioButtonFor(m=>m.check1 , new {@class="form-check-input", @value = "3"})
+                        <label class="form-check-label fw-bold" for="radioExample3">
+                            @ViewBag.Survey.Option3
+                        </label>
+                    </div>
+
+                }
+                @if (ViewBag.Survey.Option4 != null)
+                {
+                    <div class="form-check m-4">
+                        @Html.RadioButtonFor(m=>m.check1 , new {@class="form-check-input", @value = "4"})
+                        <label class="form-check-label fw-bold" for="radioExample3">
+                            @ViewBag.Survey.Option4
+                        </label>
+                    </div>
+
+                }
+                @if (ViewBag.Survey.Option5 != null)
+                {
+                    <div class="form-check m-4">
+                        @Html.RadioButtonFor(m=>m.check1 , new {@class="form-check-input", @value = "5"})
+                        <label class="form-check-label fw-bold" for="radioExample3">
+                            @ViewBag.Survey.Option5
+                        </label>
+                    </div>
+
+                }
+                @if (ViewBag.Survey.Option6 != null)
+                {
+                    <div class="form-check m-4">
+                        @Html.RadioButtonFor(m=>m.check1 , new { @class="form-check-input",@value = "6"})
+                        <label class="form-check-label fw-bold" for="radioExample3">
+                            @ViewBag.Survey.Option6
+                        </label>
+                    </div>
+
+                }
+            </div>
+            <div class="text-end justify-content-center d-flex">
+
+                <input type="text" asp-for="Id" value=@ViewBag.survey.Id hidden />
+                <input type="submit" class="btn btn-dark w-50 m-4" value="Submit" />
+            </div>
+        }
+    </div>
+</div>
